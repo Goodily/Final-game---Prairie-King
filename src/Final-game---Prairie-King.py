@@ -14,7 +14,7 @@ screen = pygame.display.set_mode(size)
 class User(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)  # construct the parent component
-        self.image = pygame.image.load("facing up.png").convert_alpha()
+        self.image = pygame.image.load("../assets/images/facing up.png").convert_alpha()
         self.facing = 0  # 0 is up, 1 is down, 2 is left, and 3 is right
         self.rect = self.image.get_rect()
         self.rect.topleft = (320, 240)
@@ -39,19 +39,19 @@ class User(pygame.sprite.Sprite):
             self.delta = (self.delta[0], 0)
 
     def change_image_up(self):
-        self.image = pygame.image.load("facing up.png").convert_alpha()
+        self.image = pygame.image.load("../assets/images/facing up.png").convert_alpha()
         self.facing = 0
 
     def change_image_down(self):
-        self.image = pygame.image.load("facing down.png").convert_alpha()
+        self.image = pygame.image.load("../assets/images/facing down.png").convert_alpha()
         self.facing = 1
 
     def change_image_left(self):
-        self.image = pygame.image.load("facing left.png").convert_alpha()
+        self.image = pygame.image.load("../assets/images/facing left.png").convert_alpha()
         self.facing = 2
 
     def change_image_right(self):
-        self.image = pygame.image.load("facing right.png").convert_alpha()
+        self.image = pygame.image.load("../assets/images/facing right.png").convert_alpha()
         self.facing = 3
 
 
@@ -59,7 +59,7 @@ class User(pygame.sprite.Sprite):
 class Entity(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)  # construct the parent component
-        self.image = pygame.image.load("Entity.png").convert_alpha()
+        self.image = pygame.image.load("../assets/images/Entity.png").convert_alpha()
         self.rect = self.image.get_rect()
 
         spawn_choice = random.randint(0, 3)
@@ -108,7 +108,7 @@ class Entity(pygame.sprite.Sprite):
 class Bullet(pygame.sprite.Sprite):
     def __init__(self, init_pos, direction):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load("bullet.png").convert_alpha()
+        self.image = pygame.image.load("../assets/images/bullet.png").convert_alpha()
         self.rect = self.image.get_rect()
         self.rect.topleft = init_pos
         self.dir_x = direction[0]
@@ -124,12 +124,12 @@ class Bullet(pygame.sprite.Sprite):
 
 
 # background
-start_bg = pygame.image.load("start screen.png")
-game_bg = pygame.image.load("Background.png")
-gameover1_bg = pygame.image.load("game over 1.png")
-gameover2_bg = pygame.image.load("game over 2.png")
-tutorial_bg = pygame.image.load("Tutorial.png")
-win_bg = pygame.image.load("Win_Screen.png")
+start_bg = pygame.image.load("../assets/images/start screen.png")
+game_bg = pygame.image.load("../assets/images/Background.png")
+gameover1_bg = pygame.image.load("../assets/images/game over 1.png")
+gameover2_bg = pygame.image.load("../assets/images/game over 2.png")
+tutorial_bg = pygame.image.load("../assets/images/Tutorial.png")
+win_bg = pygame.image.load("../assets/images/Win_Screen.png")
 
 
 screen = pygame.display.set_mode((640, 480))
@@ -137,15 +137,15 @@ bullet_group = pygame.sprite.Group()
 entity_group = pygame.sprite.Group()
 character = User()
 character_group = pygame.sprite.Group(character)
-bounce = pygame.mixer.Sound("gun fire.wav")
+bounce = pygame.mixer.Sound("../assets/sounds/gun fire.wav")
 bounce.set_volume(0.3)
 
-pygame.mixer.music.load("Outlaw.mp3")
+pygame.mixer.music.load("../assets/sounds/Outlaw.mp3")
 pygame.mixer.music.set_volume(0.3)
 pygame.mixer.music.play(-1)
 
 clock = pygame.time.Clock()
-my_font = pygame.font.Font("Pacifico.ttf", 20)
+my_font = pygame.font.Font("../assets/fonts/Pacifico.ttf", 20)
 
 bg_id = 0
 num_entity = 0
@@ -172,7 +172,7 @@ while keep_going:
 
             if event.key == K_SPACE:
                 pygame.mixer.music.stop()
-                pygame.mixer.music.load("Final Boss.mp3")
+                pygame.mixer.music.load("../assets/sounds/Final Boss.mp3")
                 pygame.mixer.music.set_volume(0.3)
                 pygame.mixer.music.play(-1)
                 if bg_id == 0:
@@ -285,7 +285,7 @@ while keep_going:
 
         if kill_count >= win_kill_count:
             pygame.mixer.music.stop()
-            pygame.mixer.music.load("Ending.mp3")
+            pygame.mixer.music.load("../assets/sounds/Ending.mp3")
             pygame.mixer.music.set_volume(0.3)
             pygame.mixer.music.play(-1)
             bg_id = 5
